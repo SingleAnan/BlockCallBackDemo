@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ViewController2.h"
 
 @interface ViewController ()
 
@@ -19,6 +20,16 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    ViewController2 *vc =[[ViewController2 alloc]init];
+    // 回调修改颜色
+    vc.newBackGroundColor = ^(UIColor *color){
+        self.view.backgroundColor = color;
+    };
+    [self presentViewController:vc animated:YES completion:^{
+        NSLog(@"OK");
+    }];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
